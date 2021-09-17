@@ -7,15 +7,13 @@
   <% end %>
 </div>
 
-<% @post_images.each do |post_image| %>
+<% @books.each do |book| %>
 <div>
-  <%= link_to post_image_path(post_image.id) do %>
-    <%= attachment_image_tag post_image, :image %>
+  
   <% end %>
-  <p>投稿ユーザー画像：<%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>Title：<%= post_image.shop_name %></p>
-  <p>Opinion</p>：<%= post_image.caption %></p>
-  <p>ユーザーネーム：<%= post_image.user.name %></p>
+  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p>Title：<%= book.title %></p>
+  <p>Opinion：<%= book.body %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
 </div>
 <% end %>
-<%= paginate @post_images %>

@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <script src="https://kit.fontawesome.com/35d3da8b06.js" crossorigin="anonymous"></script>
+
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,29 +17,29 @@
   <body>
     <% if user_signed_in? %>
       <li>
-      <%= link_to "Home", user_path(current_user.id) %>
+     <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
-      <%= link_to "Users", "/users" %>
+      <i class="fas fa-users"></i><%= link_to "Users", "/users" %>
       </li>
       <li>
-      <%= link_to "Books", books_path(current_user.id) %>
+      <i class="fas fa-book-open"></i><%= link_to "Books", books_path(current_user.id) %>
       </li>
       <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      <i class="fas fa-sign-out-alt"></i><%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-      <%= link_to "Home",root_path %>
+      <i class="fas fa-home"><%= link_to "Home",root_path %>
       </li>
       <li>
-      <%= link_to "About", "/about" %>
+      <i class="fas fa-link"></i><%= link_to "About", "/about" %>
       </li>
       <li>
-        <%= link_to "sign up", new_user_registration_path %>
+        <i class="fas fa-user-plus"></i><%= link_to "sign up", new_user_registration_path %>
       </li>
       <li>
-        <%= link_to "login", new_user_session_path %>
+        <i class="fas fa-sign-in-alt"></i><%= link_to "login", new_user_session_path %>
       </li>
     <% end %>
 

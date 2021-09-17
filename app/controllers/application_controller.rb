@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #ログイン後の遷移先変更
+  def after_sign_in_path_for(resource)
+    books_path
+  end
+  
   private
 
     def configure_permitted_parameters
