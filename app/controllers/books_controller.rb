@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id]) #データ(レコード)を一件取得
     book.destroy  #データ（レコード）を削除
-    redirect_to books_path 
+    redirect_to books_path
 
   end
 

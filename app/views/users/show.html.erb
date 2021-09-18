@@ -1,18 +1,18 @@
 <h2>User info</h2>
 <div>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  
   <table>
     <tbody>
-      <tr></tr>
       <tr>
        <th>name</th>
        <th><%= @user.name %></th>
       </tr>
       <tr>
        <th>intoroduction</th>
-       <!--<th><%#= @user.introduction %></th>-->
+       <th><%= @user.introduction %></th>
       </tr>
-    </tbody>
+     </tbody>
   </table>
 
 <h1>New book</h1>
@@ -30,15 +30,17 @@
   <% end %>
 </div>
 
-<h2>Book detail</h2>
+<h2>Books</h2>
+<table>
 <% @books.each do |book| %>
- <div>
+ <tr>
 
-   <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-   <p><%= book.user.name %></p>
-   <p>Title：<%= link_to "book.title",book_path(book.id) %></p>
-   <p>Opinion：<%= book.body %></p>
+   <td><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+   
+   <td><%= link_to "book.title",book_path(book.id) %></td>
+   <td><%= book.body %></td>
 
-   </div>
+   </tr>
 <% end %>
+</table>
 
