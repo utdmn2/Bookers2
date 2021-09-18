@@ -16,6 +16,7 @@
 
   <body>
     <header>
+      <%= link_to "Bookers", root_path %>
     <% if user_signed_in? %>
       <li>
        <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
