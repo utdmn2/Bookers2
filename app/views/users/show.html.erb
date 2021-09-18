@@ -1,19 +1,36 @@
+<h2>User info</h2>
 <div>
-  <h3><%= @user.name %></h3>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  
+  <table>
+    <tbody>
+      <tr></tr>
+      <tr>
+       <th>name</th>
+       <th><%= @user.name %></th>
+      </tr>
+      <tr>
+       <th>intoroduction</th>
+       <!--<th><%#= @user.introduction %></th>-->
+      </tr>
+    </tbody>
+  </table>
+
   <% if @user.id == current_user.id %>
   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
 
+<h2>Book detail</h2>
 <% @books.each do |book| %>
-<div>
+ <div>
+
+   <p><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+   <p><%= book.user.name %></p>
+   <p>Title：<%= book.title %></p>
+   <p>Opinion：<%= book.body %></p>
   
-  <% end %>
-  <p>投稿ユーザー画像：<%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>Title：<%= book.title %></p>
-  <p>Opinion：<%= book.body %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
+   <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+  <td><%#= link_to "Destroy", destroy_book_path(book.id),method: :delete, "data-confirm" => "本当に消しますか?" %></td>
 </div>
 <% end %>
+

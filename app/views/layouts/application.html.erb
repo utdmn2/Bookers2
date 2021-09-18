@@ -15,25 +15,26 @@
   </head>
 
   <body>
+    <header>
     <% if user_signed_in? %>
       <li>
-     <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
+       <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
-      <i class="fas fa-users"></i><%= link_to "Users", "/users" %>
+       <i class="fas fa-users"></i><%= link_to "Users", "/users" %>
       </li>
       <li>
-      <i class="fas fa-book-open"></i><%= link_to "Books", books_path(current_user.id) %>
+       <i class="fas fa-book-open"></i><%= link_to "Books", books_path(current_user.id) %>
       </li>
       <li>
-      <i class="fas fa-sign-out-alt"></i><%= link_to "logout", destroy_user_session_path, method: :delete %>
+       <i class="fas fa-sign-out-alt"></i><%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-      <i class="fas fa-home"><%= link_to "Home",root_path %>
+       <i class="fas fa-home"><%= link_to "Home",root_path %>
       </li>
       <li>
-      <i class="fas fa-link"></i><%= link_to "About", "/about" %>
+       <i class="fas fa-link"></i><%= link_to "About", "/about" %>
       </li>
       <li>
         <i class="fas fa-user-plus"></i><%= link_to "sign up", new_user_registration_path %>
@@ -42,7 +43,15 @@
         <i class="fas fa-sign-in-alt"></i><%= link_to "login", new_user_session_path %>
       </li>
     <% end %>
+    
+    </header>
+    
+    
 
     <%= yield %>
+    
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>

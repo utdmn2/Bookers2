@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   #ログイン後の遷移先変更
   def after_sign_in_path_for(resource)
-    books_path
+    user_path(resource)
   end
   
   private
