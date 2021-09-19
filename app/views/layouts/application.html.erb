@@ -17,7 +17,7 @@
   <body>
   
     <header>
-      <%= link_to "Bookers", root_path %>
+      <a href= "https://1fe2a4d3611e481cb3784e65672d434b.vfs.cloud9.us-east-1.amazonaws.com/" %>Bookers</a>
     <% if user_signed_in? %>
       <li>
        <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
@@ -51,9 +51,7 @@
       <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
-    
-    
-
+    　
     <%= yield %>
     
  
