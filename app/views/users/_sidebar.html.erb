@@ -15,12 +15,11 @@
      </tbody>
   </table>
 
-   <% if @user.id == current_user.id %>
+  <% if @user.id == current_user.id %>
   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% else %>
   <p><%= link_to "プロフィール編集", current_user %></p>
   <% end %>
-
 
 <h1>New book</h1>
   <% if @book.errors.any? %>
@@ -39,6 +38,5 @@
 <% end %>
 
 </div>
-
 
 
