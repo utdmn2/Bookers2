@@ -7,6 +7,7 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
@@ -14,37 +15,50 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
   
-    <header>
-      <a href= "https://1fe2a4d3611e481cb3784e65672d434b.vfs.cloud9.us-east-1.amazonaws.com/" %>Bookers</a>
-    <% if user_signed_in? %>
-      <li>
+  <header class="shadow-sm">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light ">
+    <div class="container">
+     <a class="navbar-brand" href="/" >Bookers</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+      <li class="nav-item">
        <i class="fas fa-home"></i><%= link_to "Home", user_path(current_user.id) %>
       </li>
-      <li>
+      <li class="nav-item">
        <i class="fas fa-users"></i><%= link_to "Users", "/users" %>
       </li>
-      <li>
+      <li class="nav-item">
        <i class="fas fa-book-open"></i><%= link_to "Books", books_path(current_user.id) %>
       </li>
-      <li>
+      <li class="nav-item">
        <i class="fas fa-sign-out-alt"></i><%= link_to "logout", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
-      <li>
+      <li class="nav-item">
        <i class="fas fa-home"><%= link_to "Home",root_path %>
       </li>
-      <li>
+      <li class="nav-item">
        <i class="fas fa-link"></i><%= link_to "About", "/about" %>
       </li>
-      <li>
-        <i class="fas fa-user-plus"></i><%= link_to "sign up", new_user_registration_path %>
+      <li class="nav-item">
+       <i class="fas fa-user-plus"></i><%= link_to "sign up", new_user_registration_path %>
       </li>
-      <li>
-        <i class="fas fa-sign-in-alt"></i><%= link_to "login", new_user_session_path %>
+      <li class="nav-item">
+       <i class="fas fa-sign-in-alt"></i><%= link_to "login", new_user_session_path %>
       </li>
+
     <% end %>
+       </ul>
+      </div>
+     </div>
+    </nav>
     
     </header>
     

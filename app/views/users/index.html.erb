@@ -1,23 +1,31 @@
-<%= render 'users/sidebar', book: @book, user: @user %>
+<div class="container">
+ <div class="row">
 
-<h1>Users</h1>
-<table>
- <thead>
-  <tr>
-   <th>image</th>
-   <th>name</th>
-   <th></th>
-  </tr>
- </thead>
+  <%= render 'users/sidebar', book: @book, user: @user %>
+   
+   <div class="col-md-8 offset-md-1">
+    <h1>Users</h1>
+     <table class="table">
+      <thead>
+       <tr>
+        <th scope="col">image</th>
+        <th scope="col">name</th>
+        <th scope=""></th>
+       </tr>
+     </thead>
 
- <tbody>
+     <tbody>
 
-    <% @users.each do |user| %>
- <tr>
-   <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
-   <td><p><%= user.name %></p></td>
-   <td><p><%= link_to "Show",user_path(user.id) %></p></td>
- </tr>
-    <% end %>
- </tbody>
-</table>
+       <% @users.each do |user| %>
+       <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+        <td><p><%= user.name %></p></td>
+        <td><p><%= link_to "Show",user_path(user.id) %></p></td>
+      </tr>
+        <% end %>
+     </tbody>
+    </table>
+
+   </div>
+  </div>
+</div>

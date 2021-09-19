@@ -1,28 +1,31 @@
+<div class="col-md-3">
 <h2>User info</h2>
 <div>
   <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
-  <table>
+  <table class="table">
     <tbody>
       <tr>
-       <th>name</th>
-       <th><%= user.name %></th>
+       <th scope="col">name</th>
+       <th scope="col"><%= user.name %></th>
       </tr>
       <tr>
-       <th>intoroduction</th>
-       <th><%= user.introduction %></th>
+       <th scope="col">intoroduction</th>
+       <th scope="col"><%= user.introduction %></th>
       </tr>
      </tbody>
   </table>
 
    <% if user.id == current_user.id %>
-  <p><%= link_to edit_user_path(user) do %>
-     <i class="fas fa-user-cog"></i>
-     <% end %></p>
+   <!--<button type="button" class="btn btn-outline-dark">-->
+   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block" do %>
+   <i class="fas fa-user-cog"></i>
+     <% end %></button>
   <% else %>
-  <p><%= link_to current_user do %>
+   <!--<button type="button" class="btn btn-outline-dark">-->
+   <%= link_to current_user, class: "btn btn-outline-dark" do %>
      <i class="fas fa-user-cog"></i>
-     <% end %></p>
+     <% end %></button>
   <% end %>
 
 
@@ -35,13 +38,14 @@
 <% end %>
 
 <%= form_with model: book, url:'/books', local:true do |f| %>
-  <h4>Title</h4>
+  <p>Title</p>
   <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
+  <p>Opinion</p>
+  <%= f.text_area :body %><br>
   <%= f.submit 'Create Book' %>
 <% end %>
 
+ </div>
 </div>
 
 
