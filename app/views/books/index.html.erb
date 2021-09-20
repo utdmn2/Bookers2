@@ -1,3 +1,11 @@
+
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container">
  <div class="row">
   <%= render 'users/sidebar', book: @book, user: @user  %>
@@ -5,12 +13,12 @@
    <div class="col-md-8 offset-md-1">
 
   <h1>Books</h1>
-   <table>
+   <table class="table">
     <thead>
     <tr>
-     <th></th>
-     <th>Title</th>
-     <th>Opinion</th>
+     <th scope="col"></th>
+     <th scope="col">Title</th>
+     <th scope="">Opinion</th>
     </tr>
     </thead>
 
