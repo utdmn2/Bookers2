@@ -8,8 +8,9 @@
    <table class="table">
     <tbody>
      <tr>
-      <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
-        <%= link_to user_path do %>
+      <td><%= link_to user_path(@user) do %>
+       <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
+
         <%= @user.name %>
         <% end %>
       </td>

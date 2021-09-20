@@ -35,7 +35,7 @@
           <%= link_to " Users", "/users", class: "nav-item text-light fas fa-users"%>
          </li>
          <li>
-          <%= link_to " Books", books_path(current_user.id), class: "nav-item text-light fas fa-book-open"%>
+          <%= link_to " Books", books_path, class: "nav-item text-light fas fa-book-open"%>
          </li>
          <li>
           <%= link_to " logout", destroy_user_session_path, method: :delete, class: "nav-item text-light fas fa-sign-out-alt" %>
