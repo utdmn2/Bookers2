@@ -19,26 +19,48 @@
           <% end %>
       </td>
       <td><%= @book.body %></td>
+       
+       <!--いいね機能記述-->
        <% if @book.favorited_by?(current_user) %>
-    <td>
-      <%= link_to book_favorites_path(@book), method: :delete do %>
+      <td>
+       <%= link_to book_favorites_path(@book), method: :delete do %>
         ♥<%= @book.favorites.count %>
-      <% end %>
-    </td>
-    <% else %>
-    <td>
-      <%= link_to book_favorites_path(@book), method: :post do %>
+       <% end %>
+      </td>
+       <% else %>
+      <td>
+       <%= link_to book_favorites_path(@book), method: :post do %>
         ♡<%= @book.favorites.count %>
-      <% end %>
-    </td>
+       <% end %>
+      </td>
   <% end %>
 
+　　　　　<!--ログインユーザーだった場合の編集・削除ボタン-->
         <% if @book.user == current_user %>
      <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %></td>
      <td><%= link_to "Destroy", book_path(@book.id),method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-sm btn-danger" %></td>
     <% end %>
+    <td>コメント数：<%= @book.book_comments.count %></td>
     </tr>
-   </table>
+　　</table>
+    <div>
+    
+    <!--コメント機能-->
+<% @book.book_comments.each do |book_comment| %>
+  <p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></p>
+  <%= book_comment.user.name %>
+  <%= book_comment.comment %>
+  <% if book_comment.user == current_user %>
+
+    <%= link_to "削除", book_book_comment_path(book_comment.book, @book), method: :delete %>
+
+  <% end %>
+  <% end %>
+<%= form_with(model:[@book, @book_comment], local: true) do |f| %>
+  <%= f.text_area :comment %>
+  <%= f.submit "送信する" %>
+<% end %>
+</div>
   </div>
  </div>
 </div>
