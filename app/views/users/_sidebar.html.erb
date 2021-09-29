@@ -15,10 +15,14 @@
       </tr>
       <tr>
        <th scope="col">follows</th>
-       <th scope="col"><%= user.followings.count %></th>
+       <th scope="col"><%= link_to user_followings_path(user.id) do %>
+       <%= user.followings.count %></th>
+       <% end %>
       </tr>
        <th scope="col">followers</th>
-       <th scope="col"><%= user.followers.count %></th>
+       <th scope="col"><%= link_to user_followers_path(user.id) do %>
+       <%= user.followers.count %></th>
+       <% end %>
      </tbody>
   </table>
       <% if user == current_user %>
