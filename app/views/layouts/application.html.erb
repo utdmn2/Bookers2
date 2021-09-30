@@ -29,7 +29,7 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
          <li>
-          <%= link_to " Home", user_path(current_user.id), class: "nav-item text-light fas fa-home" %>
+          <%= link_to " Home ", user_path(current_user.id), class: "nav-item text-light fas fa-home" %>
          </li>
          <li>
           <%= link_to " Users", "/users", class: "nav-item text-light fas fa-users"%>
@@ -60,12 +60,31 @@
       </div>
      </div>
     </nav>
-    </header>
+   </header>
 
-      <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-      <% end %>
+ <div class="container">
+  <div class="row">
+   <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+   <% end %>
+      
+   <% if user_signed_in? %>
+      <div class="col"></div>
+      <div class="col">
+    <%= form_tag(search_path, method: :get) do %>
+     <%= text_field_tag (:word) %>
+   　 <%= select_tag 'range', options_for_select([['User', '1'], ['Book', '2']]) %>
+     <%= select_tag 'search', options_for_select([["前方一致","forward_match"], ["後方一致","backward_match"], ["完全一致","perfect_match"], ["部分一致","partial_match"]]) %>
+     <%= submit_tag "検索" %>
+    <% end %>
+    <% end %>
+    </div>
+
+
     <%= yield %>
+    
+  </div>
+ </div>
 
 
  <footer>
