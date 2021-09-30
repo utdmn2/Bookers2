@@ -1,6 +1,8 @@
 <h2>Follow Users</h2>
+<div class="container-fluid">
+  <div class="row">
 <% if @users.exists? %>
-<table>
+<table class="table">
   <thead>
     <tr>
       <th scope="col">image</th>
@@ -13,11 +15,11 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td scope="col"><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
         <td><%= user.name %></td>
-        <td scope="col">フォロー数: <%= user.followings.count %></td>
-        <td scope="col">フォロワー数: <%= user.followers.count %></td>
-        <td scope="col"><%= link_to "Show",user_path(user.id) %></td>
+        <td>フォロー数: <%= user.followings.count %></td>
+        <td>フォロワー数: <%= user.followers.count %></td>
+        <td><%= link_to "Show",user_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +27,5 @@
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
+</div>
+</div>
