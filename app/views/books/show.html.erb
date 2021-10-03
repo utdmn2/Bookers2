@@ -37,24 +37,18 @@
 
     <!--コメント機能-->
  <table>
-<% @book.book_comments.each do |book_comment| %>
-<tr>
-  <td><%= attachment_image_tag book_comment.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg" %><br>
-
-  <%= book_comment.user.name %></td>
- <td><%= book_comment.comment %></td>
-  <td><% if book_comment.user == current_user %>
-
-    <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
-
-  <% end %>
-  <% end %>
-  </tr>
+  <!--コメント一覧-->
+  <div id="comments_area" %>
+  <%= render 'book_comments/index', book: @book %>
+  </div>
   </table>
-  
-  <%= render 'book_comments/index', book: @book, book_comment: @book_comment %>
 
-</div>
+  <!--コメントフォーム-->
+
+  <div class="comment-form">
+  <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>
+  </div>
+  </div>
   </div>
  </div>
 </div>
