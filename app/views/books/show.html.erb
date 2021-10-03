@@ -21,8 +21,9 @@
       <td><%= @book.body %></td>
 
        <!--いいね機能記述-->
-       
-       <%= render 'books/favorite-btn', book: @book %>
+       <td class="favorite-btn_<%= @book.id%>">
+       <%= render 'favorites/favorite-btn', book: @book %>
+       </td>
 
 　　　　　<!--ログインユーザーだった場合の編集・削除ボタン-->
      <% if @book.user == current_user %>
@@ -50,10 +51,9 @@
   <% end %>
   </tr>
   </table>
-<%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-  <%= f.text_area :comment %><br>
-  <%= f.submit "送信" %>
-<% end %>
+  
+  <%= render 'book_comments/index', book: @book, book_comment: @book_comment %>
+
 </div>
   </div>
  </div>
