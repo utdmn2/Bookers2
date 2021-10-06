@@ -1,0 +1,22 @@
+
+<% @entries.each do |e| %>
+  <h5><%= e.user.name %>さんとのチャット</h5>
+<% end %>
+<div class="container-fluid">
+  <div class="row">
+ <% @messages.each do |m| %>
+ <table class=table>
+   <td><%= m.content %></td>
+</table>
+   <% end %>
+   </div>
+  <div class="row">
+
+<%= form_for @message do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :room_id, :value => @room.id %>
+  <br>
+  <% f.submit %>
+<% end %>
+</div>
+</div>
