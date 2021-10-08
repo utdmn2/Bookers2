@@ -20,11 +20,12 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     @book = Book.new
-    
-    @books = Book.includes(:favorited_users).sort {|a,b| 
-    b.favorited_users.includes(:favorites).size  <=> 
-    a.favorited_users.includes(:favorites).size}
-    
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).sort {|a,b|
+    b.favorited_users.includes(:favorites).where(created_at: from...to).size  <=>
+    a.favorited_users.includes(:favorites).where(created_at: from...to).size}
+
   end
 
   def show
@@ -32,12 +33,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = @book.user
     @book_comment = BookComment.new
-    
+
         #DM機能
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
-  
+
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
           if cu.room_id == u.room_id then
